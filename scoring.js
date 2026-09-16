@@ -80,15 +80,18 @@ var CATALOG = [
   { title: "Zooted Zone", spotify_id: "0emH8ktA8x4DkOFLsG5xkW",
     mood_tags: ["high-energy", "party", "neon", "triumph"], explicit: null,
     placement: { playlist: "New Rap Hits", position: 30, scan_date: "2026-09-15", status: "VERIFIED",
-                 playlist_url: "https://open.spotify.com/playlist/5zhnSpZqKRRaOvRMWuT0bL" } },
+                 playlist_url: "https://open.spotify.com/playlist/5zhnSpZqKRRaOvRMWuT0bL",
+                 claim_url: "https://cumulativewebinc.github.io/cwi-trust-log/claims/clm_01M2N4M1NKM8WC5CT9FCGPHAQB.html" } },
   { title: "Shaka Zulu", spotify_id: "3pQEzg7xFqGIk0CK1Za1Kw",
     mood_tags: ["warrior", "triumph", "epic", "tension"], explicit: null,
     placement: { playlist: "New Rap Hits", position: 21, scan_date: "2026-09-15", status: "VERIFIED",
-                 playlist_url: "https://open.spotify.com/playlist/5zhnSpZqKRRaOvRMWuT0bL" } },
+                 playlist_url: "https://open.spotify.com/playlist/5zhnSpZqKRRaOvRMWuT0bL",
+                 claim_url: "https://cumulativewebinc.github.io/cwi-trust-log/claims/clm_01M2N4M1NJS084QKAA9N4AD6EQ.html" } },
   { title: "Doves & Diamonds", spotify_id: "4NAyd7rvnuG3DrPFqXo4eQ",
     mood_tags: ["luxury", "reflective", "contrast"], explicit: null,
     placement: { playlist: "New Rap Hits", position: 31, scan_date: "2026-09-15", status: "VERIFIED",
-                 playlist_url: "https://open.spotify.com/playlist/5zhnSpZqKRRaOvRMWuT0bL" } },
+                 playlist_url: "https://open.spotify.com/playlist/5zhnSpZqKRRaOvRMWuT0bL",
+                 claim_url: "https://cumulativewebinc.github.io/cwi-trust-log/claims/clm_01M2N4M1NM1APFBWFWJ4CE6ZVG.html" } },
   { title: "Diabolique", spotify_id: "2eSyWmIdPzEMyWejLb2LBj",
     mood_tags: ["dark", "tension", "seductive"], explicit: null,
     placement: null,
@@ -211,6 +214,16 @@ function parseBriefParam(search) {
   }
 }
 
+/* CWI Trust Log: VERIFIED placements link to their cryptographic proof envelope.
+ * placementProofUrl returns the claim URL only when the placement is VERIFIED
+ * and the URL is a well-formed Trust Log claim page; otherwise null so the
+ * badge renders unlinked — never ship a dead proof link. */
+var TRUST_LOG_CLAIM_RE = /^https:\/\/cumulativewebinc\.github\.io\/cwi-trust-log\/claims\/clm_[0-9A-Z]+\.html$/;
+function placementProofUrl(p) {
+  if (!p || p.status !== "VERIFIED" || typeof p.claim_url !== "string") return null;
+  return TRUST_LOG_CLAIM_RE.test(p.claim_url) ? p.claim_url : null;
+}
+
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     SCORE_DISCLAIMER: SCORE_DISCLAIMER,
@@ -223,6 +236,7 @@ if (typeof module !== "undefined" && module.exports) {
     scoreTrack: scoreTrack,
     scoreCatalog: scoreCatalog,
     scoreLabel: scoreLabel,
-    parseBriefParam: parseBriefParam
+    parseBriefParam: parseBriefParam,
+    placementProofUrl: placementProofUrl
   };
 }
