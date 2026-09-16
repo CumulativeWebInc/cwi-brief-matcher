@@ -34,6 +34,8 @@
     if (t.placement && t.placement.status === "VERIFIED") {
       lines.push("Verified playlist placement: #" + t.placement.position + " on \"" +
         t.placement.playlist + "\" (scan " + t.placement.scan_date + ")");
+      var proofUrl = (typeof placementProofUrl === "function") ? placementProofUrl(t.placement) : null;
+      if (proofUrl) lines.push("Trust log proof: " + proofUrl);
     }
     lines.push("");
     lines.push("Scores are algorithmic estimates, not human curation. Verify all claims at " + VERIFY_URL);
@@ -65,7 +67,13 @@
       card.className = "card";
       var placementHtml = "";
       if (t.placement && t.placement.status === "VERIFIED") {
-        placementHtml = '<p class="placement">VERIFIED placement: #' + t.placement.position +
+        // VERIFIED badge links to the cryptographic proof in the CWI Trust Log.
+        // Gated on placementProofUrl: no live proof URL, no link — never ship a dead proof link.
+        var proofUrl = (typeof placementProofUrl === "function") ? placementProofUrl(t.placement) : null;
+        var badge = proofUrl
+          ? '<a class="verified-proof" href="' + esc(proofUrl) + '" target="_blank" rel="noopener" title="View cryptographic proof in the CWI Trust Log">VERIFIED placement</a>'
+          : "VERIFIED placement";
+        placementHtml = '<p class="placement">' + badge + ': #' + t.placement.position +
           ' on <a href="' + esc(t.placement.playlist_url) + '" target="_blank" rel="noopener">' +
           esc(t.placement.playlist) + '</a> (scan ' + esc(t.placement.scan_date) + ')</p>';
       }
