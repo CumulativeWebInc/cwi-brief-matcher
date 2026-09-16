@@ -11,17 +11,17 @@
 <header class="site-header">
   <img class="logo" src="logo.jpg" alt="Cumulative Web Inc logo">
   <div>
-    <h1>Brief Matcher</h1>
-    <p class="subtitle">Scene brief → ranked tracks · That Boy Hi Hat · Cumulative Web Inc</p>
+    <h1 data-i18n="header.title">Brief Matcher</h1>
+    <p class="subtitle" data-i18n="header.subtitle">Scene brief → ranked tracks · That Boy Hi Hat · Cumulative Web Inc</p>
   </div>
 </header>
 
 <main>
   <section class="brief-box">
-    <label for="brief">Scene brief</label>
-    <textarea id="brief" rows="3" placeholder="night chase, neon city, 90 seconds"></textarea>
-    <button id="match-btn" type="button">Match tracks</button>
-    <p class="hint">Tip: use scene words like <em>night, chase, love, fight, dream, city, luxury, horror</em>. Cmd/Ctrl+Enter also works.</p>
+    <label for="brief" data-i18n="input.label">Scene brief</label>
+    <textarea id="brief" rows="3" data-i18n-ph="input.placeholder" placeholder="night chase, neon city, 90 seconds"></textarea>
+    <button id="match-btn" type="button" data-i18n="input.button">Match tracks</button>
+    <p class="hint"><span data-i18n="input.hint_pre">Tip: use scene words like</span> <em data-i18n="input.hint_words">night, chase, love, fight, dream, city, luxury, horror</em>. <span data-i18n="input.hint_post">Cmd/Ctrl+Enter also works.</span></p>
   </section>
 
   <section class="results-wrap">
@@ -31,18 +31,18 @@
   </section>
 
   <section class="how">
-    <h2>How scoring works</h2>
-    <p>All scoring runs in your browser, client-side. Nothing is sent anywhere.</p>
+    <h2 data-i18n="how.title">How scoring works</h2>
+    <p data-i18n="how.intro">All scoring runs in your browser, client-side. Nothing is sent anywhere.</p>
     <ol>
-      <li>Your brief is lowercased and split into words.</li>
-      <li>Each word earns <strong>3 points</strong> per exact match against a track's editorial mood tags.</li>
-      <li>Each word earns <strong>2 points</strong> per exact match against a word in the track title.</li>
-      <li>Each word also earns <strong>2 points</strong> per mood tag reached through the synonym map below.</li>
-      <li>Tracks are ranked by total score; ties keep catalog order.</li>
+      <li data-i18n="how.step1">Your brief is lowercased and split into words.</li>
+      <li><span data-i18n="how.step2_pre">Each word earns</span> <strong data-i18n="how.step2_pts">3 points</strong> <span data-i18n="how.step2_post">per exact match against a track's editorial mood tags.</span></li>
+      <li><span data-i18n="how.step3_pre">Each word earns</span> <strong data-i18n="how.step3_pts">2 points</strong> <span data-i18n="how.step3_post">per exact match against a word in the track title.</span></li>
+      <li><span data-i18n="how.step4_pre">Each word also earns</span> <strong data-i18n="how.step4_pts">2 points</strong> <span data-i18n="how.step4_post">per mood tag reached through the synonym map below.</span></li>
+      <li data-i18n="how.step5">Tracks are ranked by total score; ties keep catalog order.</li>
     </ol>
-    <p class="disclaimer">Scores are an <strong>algorithmic estimate — UNVERIFIED, not human curation</strong>.</p>
+    <p class="disclaimer"><span data-i18n="how.disclaimer_pre">Scores are an</span> <strong data-i18n="how.disclaimer_core">algorithmic estimate — UNVERIFIED, not human curation</strong>.</p>
     <details>
-      <summary>Synonym map (keyword → mood tags)</summary>
+      <summary data-i18n="how.syn_title">Synonym map (keyword → mood tags)</summary>
       <dl id="synonym-list" class="synonyms"></dl>
     </details>
   </section>
@@ -58,13 +58,13 @@
 </main>
 
 <footer class="truth-footer">
-  <h2>Truth notes</h2>
+  <h2 data-i18n="truth.title">Truth notes</h2>
   <ul>
-    <li>Mood tags are <strong>editorial</strong>, derived from track titles only — no audio analysis was performed.</li>
-    <li>Only playlist placements labeled VERIFIED were observed: "Zooted Zone" #30, "Shaka Zulu" #21, "Doves &amp; Diamonds" #31 on "New Rap Hits" (Spotify scan 2026-09-15). No other placements are claimed.</li>
-    <li>Listener metric: 171 monthly listeners observed 2026-09-14 — catalog-reported, not real-time Spotify data.</li>
-    <li>Clearance: this catalog is <strong>NOT pre-cleared</strong>. Sync inquiries: <a href="mailto:hp@cumulativeweb.com">hp@cumulativeweb.com</a>.</li>
-    <li>Built by Cumulative Web Inc · Agent Deck app line · 2026</li>
+    <li><span data-i18n="truth.editorial_pre">Mood tags are </span><strong data-i18n="truth.editorial_core">editorial</strong><span data-i18n="truth.editorial_post">, derived from track titles only — no audio analysis was performed.</span></li>
+    <li data-i18n="truth.placements">Only playlist placements labeled VERIFIED were observed: "Zooted Zone" #30, "Shaka Zulu" #21, "Doves &amp; Diamonds" #31 on "New Rap Hits" (Spotify scan 2026-09-15). No other placements are claimed.</li>
+    <li data-i18n="truth.listeners">Listener metric: 171 monthly listeners observed 2026-09-14 — catalog-reported, not real-time Spotify data.</li>
+    <li><span data-i18n="truth.clearance_pre">Clearance: this catalog is </span><strong data-i18n="truth.clearance_core">NOT pre-cleared</strong><span data-i18n="truth.clearance_post">. Sync inquiries: </span><a href="mailto:hp@cumulativeweb.com">hp@cumulativeweb.com</a>.</li>
+    <li data-i18n="truth.built">Built by Cumulative Web Inc · Agent Deck app line · 2026</li>
   </ul>
 </footer>
 
@@ -84,5 +84,6 @@
 })();
 </script>
 <script src="app.js"></script>
+<script src="https://cumulativewebinc.github.io/cwi-i18n/i18n.js" data-app="brief-matcher"></script>
 </body>
 </html>
