@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brief Matcher — That Boy Hi Hat | Cumulative Web Inc</title>
+<meta name="description" content="Paste a scene brief, get ranked track recommendations from the That Boy Hi Hat catalog. Algorithmic estimates — not human curation.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <img class="logo" src="logo.jpg" alt="Cumulative Web Inc logo">
+  <div>
+    <h1>Brief Matcher</h1>
+    <p class="subtitle">Scene brief → ranked tracks · That Boy Hi Hat · Cumulative Web Inc</p>
+  </div>
+</header>
+
+<main>
+  <section class="brief-box">
+    <label for="brief">Scene brief</label>
+    <textarea id="brief" rows="3" placeholder="night chase, neon city, 90 seconds"></textarea>
+    <button id="match-btn" type="button">Match tracks</button>
+    <p class="hint">Tip: use scene words like <em>night, chase, love, fight, dream, city, luxury, horror</em>. Cmd/Ctrl+Enter also works.</p>
+  </section>
+
+  <section class="results-wrap">
+    <p id="results-meta" class="meta"></p>
+    <p><a id="share-link" class="share-link" href="#" style="display:none">Share these results</a></p>
+    <div id="results"></div>
+  </section>
+
+  <section class="how">
+    <h2>How scoring works</h2>
+    <p>All scoring runs in your browser, client-side. Nothing is sent anywhere.</p>
+    <ol>
+      <li>Your brief is lowercased and split into words.</li>
+      <li>Each word earns <strong>3 points</strong> per exact match against a track's editorial mood tags.</li>
+      <li>Each word earns <strong>2 points</strong> per exact match against a word in the track title.</li>
+      <li>Each word also earns <strong>2 points</strong> per mood tag reached through the synonym map below.</li>
+      <li>Tracks are ranked by total score; ties keep catalog order.</li>
+    </ol>
+    <p class="disclaimer">Scores are an <strong>algorithmic estimate — UNVERIFIED, not human curation</strong>.</p>
+    <details>
+      <summary>Synonym map (keyword → mood tags)</summary>
+      <dl id="synonym-list" class="synonyms"></dl>
+    </details>
+  </section>
+
+  <section class="machine">
+    <h2>For agents &amp; machines</h2>
+    <p>The full machine-readable catalog lives at
+      <a href="https://cumulativewebinc.github.io/cwi-learn/catalog.json">https://cumulativewebinc.github.io/cwi-learn/catalog.json</a>.
+      The audition room's track list lives at
+      <a href="https://cumulativewebinc.github.io/cwi-sync-audition/tracks.json">https://cumulativewebinc.github.io/cwi-sync-audition/tracks.json</a>.
+      Briefs can be linked POST-free: <code>?brief=night+chase+neon+city</code>.</p>
+  </section>
+</main>
+
+<footer class="truth-footer">
+  <h2>Truth notes</h2>
+  <ul>
+    <li>Mood tags are <strong>editorial</strong>, derived from track titles only — no audio analysis was performed.</li>
+    <li>Only playlist placements labeled VERIFIED were observed: "Zooted Zone" #30, "Shaka Zulu" #21, "Doves &amp; Diamonds" #31 on "New Rap Hits" (Spotify scan 2026-09-15). No other placements are claimed.</li>
+    <li>Listener metric: 171 monthly listeners observed 2026-09-14 — catalog-reported, not real-time Spotify data.</li>
+    <li>Clearance: this catalog is <strong>NOT pre-cleared</strong>. Sync inquiries: <a href="mailto:hp@cumulativeweb.com">hp@cumulativeweb.com</a>.</li>
+    <li>Built by Cumulative Web Inc · Agent Deck app line · 2026</li>
+  </ul>
+</footer>
+
+<script src="scoring.js"></script>
+<script>
+/* render the synonym map visibly on the page */
+(function () {
+  var dl = document.getElementById("synonym-list");
+  Object.keys(SYNONYMS).sort().forEach(function (k) {
+    var dt = document.createElement("dt");
+    dt.textContent = k;
+    var dd = document.createElement("dd");
+    dd.textContent = SYNONYMS[k].join(", ");
+    dl.appendChild(dt);
+    dl.appendChild(dd);
+  });
+})();
+</script>
+<script src="app.js"></script>
+</body>
+</html>
