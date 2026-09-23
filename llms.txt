@@ -1,0 +1,24 @@
+# Brief Matcher
+> Paste a scene brief, get ranked That Boy Hi Hat track recommendations — algorithmic estimates, UNVERIFIED, not human curation.
+
+Client-side brief-to-track matcher over the CWI catalog. Scores on tags x3 / title x2 / synonym x2. Every score is labeled UNVERIFIED; VERIFIED playlist badges link to trust-log proof pages.
+
+## Live
+- App: https://cumulativewebinc.github.io/cwi-brief-matcher/
+- Try it: https://cumulativewebinc.github.io/cwi-brief-matcher/?brief=dark%20trap%20fight%20scene
+
+## Features
+- Client-side scoring engine (scoring.js, zero dependencies)
+- UNVERIFIED label on every algorithmic score
+- VERIFIED badges link to trust-log proof pages
+- ?brief= deep links
+- 15/15 tests
+
+## Machine-readable
+- sample_brief: https://cumulativewebinc.github.io/cwi-brief-matcher/?brief=dark%20trap%20fight%20scene
+
+## Honest limits
+Scores are algorithmic estimates, not human curation. Clearance is NOT pre-cleared here — contact hp@cumulativeweb.com.
+
+## Provider
+Cumulative Web Inc — hp@cumulativeweb.com

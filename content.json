@@ -1,0 +1,29 @@
+{
+  "day": "2026-09-23",
+  "id": "os-retrofit-15",
+  "type": "os-retrofit",
+  "app": "Brief Matcher",
+  "url": "https://cumulativewebinc.github.io/cwi-brief-matcher/",
+  "media_files": [
+    "https://cumulativewebinc.github.io/cwi-brief-matcher/brand/logo.jpg"
+  ],
+  "caption": "Brief Matcher \u2014 Paste a scene brief, get ranked That Boy Hi Hat track recommendations \u2014 algorithmic estimates, UNVERIFIED, not human curation. Try it: https://cumulativewebinc.github.io/cwi-brief-matcher/?brief=dark%20trap%20fight%20scene",
+  "hashtags": [
+    "CumulativeWebInc",
+    "AgentDeck",
+    "AIAgents",
+    "OpenSource"
+  ],
+  "threads_text": "Brief Matcher is live from Cumulative Web Inc: Paste a scene brief, get ranked That Boy Hi Hat track recommendations \u2014 algorithmic estimates, UNVERIFIED, not human curation. https://cumulativewebinc.github.io/cwi-brief-matcher/?brief=dark%20trap%20fight%20scene",
+  "post_order": 1,
+  "platform_targets": [
+    "threads",
+    "x",
+    "instagram"
+  ],
+  "cta": {
+    "label": "Try it: match a sample brief",
+    "url": "https://cumulativewebinc.github.io/cwi-brief-matcher/?brief=dark%20trap%20fight%20scene"
+  },
+  "honest_limits": "Scores are algorithmic estimates, not human curation. Clearance is NOT pre-cleared here \u2014 contact hp@cumulativeweb.com."
+}
