@@ -10,5 +10,6 @@
     "name": "Cumulative Web Inc",
     "url": "https://cumulativeweb.com/"
   },
-  "description": "Client-side brief-to-track scoring with all scores UNVERIFIED-labeled; 15/15 tests."
+  "description": "Client-side brief-to-track scoring with all scores UNVERIFIED-labeled; 15/15 tests.",
+  "schema_version": "1.0.0"
 }
